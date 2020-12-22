@@ -1,0 +1,12 @@
+{
+  "name": "matias-TypeScript",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/matiastang/matias-TypeScript.git",
+  "author": "matiastang <18380449615@163.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "ts-node": "^9.1.1",
+    "typescript": "^4.1.3"
+  }
+}
