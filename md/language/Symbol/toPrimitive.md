@@ -2,7 +2,7 @@
  * @Author: tangdaoyong
  * @Date: 2020-12-22 17:37:26
  * @LastEditors: tangdaoyong
- * @LastEditTime: 2020-12-23 10:25:00
+ * @LastEditTime: 2020-12-23 10:38:13
  * @Description: ToPrimitive
 -->
 
@@ -89,6 +89,19 @@ console.log(`${user}`)// hint: string
 console.log(+user);// hint: number
 console.log(user + '500');// hint: default
 ```
+
+## Symbol.toPrimitive 和 toString/valueOf 方法
+并不要求 Symbol.toPrimitive 和 toString/valueOf 方法必须返回 hint 参数值所暗示的类型值。
+
+但要注意下面两点：
+
+1. Symbol.toPrimitive 和 toString 方法的返回值必须是基本类型值。
+2. valueOf 方法除了可以返回基本类型值，也可以返回其他类型值。
+其他
+当我们创建一个普通对象时（{} 或 new Object() 的方式等），对象上是不具备 [Symbol.toPrimitive] （方法）属性的。所以，对于普通对象的到基本类型值的运算，一般按照具体场景：
+
+hint 值为 "string" 时，先调用 toString，toString 如果返回一个基本类型值了，则返回、终止运算；否则接着调用 valueOf 方法。
+否则，先调用 valueOf，valueOf 如果返回一个基本类型值了，则返回、终止运算；否则接着调用 toString 方法。
 
 ## 遇到的问题
 
