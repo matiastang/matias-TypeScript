@@ -2,7 +2,7 @@
  * @Author: tangdaoyong
  * @Date: 2020-12-22 17:37:36
  * @LastEditors: tangdaoyong
- * @LastEditTime: 2020-12-23 10:21:28
+ * @LastEditTime: 2020-12-23 10:24:01
  * @Description: ToPrimitive
  */
 
@@ -29,15 +29,6 @@ let user = {
     }
 };
 
-
-
-let left = {
-    name: ''
-}
-// let userName: string = user as string
-// console.log(JSON.stringify(user));
-// console.log(left[user]);
-console.log(<unknown | string> user)
-console.log(`${user}`)
+console.log(`${user}`)// hint: string
 console.log(+user);// hint: number
 console.log(user + '500');// hint: default

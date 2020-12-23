@@ -2,7 +2,7 @@
  * @Author: tangdaoyong
  * @Date: 2020-12-22 17:37:26
  * @LastEditors: tangdaoyong
- * @LastEditTime: 2020-12-23 09:42:09
+ * @LastEditTime: 2020-12-23 10:25:00
  * @Description: ToPrimitive
 -->
 
@@ -40,8 +40,6 @@ interface Date {
 }
 ```
 
-
-
 ## hint
 
 `ToPrimitive` 算法在执行时，会被传递一个参数 `hint`，表示这是一个什么类型的运算（也可以叫运算的期望值），根据这个 `hint` 参数，`ToPrimitive` 算法来决定内部的执行逻辑。
@@ -63,8 +61,33 @@ interface Date {
 * 无论是否存在，调用 `obj.valueOf()` 和 `obj.toString()`。
 
 ## 查看hint
-```ts
 
+```ts
+/// <reference lib="es2015.symbol.wellknown" />
+
+/*
+* npx ts-node src/language/Symbol/toPrimitive_run.ts
+*/
+
+let user = {
+    name: "John",
+    money: 1000,
+   
+    [Symbol.toPrimitive](hint: string | number) {
+      console.log(`hint: ${hint}`);
+      switch (hint) {
+          case 'string':
+              return this.name
+          default:
+              return this.money
+      }
+    }
+};
+
+// 需要配置tsconfig.json不然`${user}`是hint: default
+console.log(`${user}`)// hint: string
+console.log(+user);// hint: number
+console.log(user + '500');// hint: default
 ```
 
 ## 遇到的问题
