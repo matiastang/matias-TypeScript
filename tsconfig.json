@@ -30,11 +30,15 @@
     选项 noImplicitAny 用来告诉编译器，当无法推断一个变量时发出一个错误（或者只能推断为一个隐式的 any 类型）
     Raise error on expressions and declarations with an implied 'any' type. 
     */
-    // "strictNullChecks": true,              /* Enable strict null checks. */
+    "strictNullChecks": true,              /*
+    非空断言操作符仅在启用 strictNullChecks 标志的时候才生效。当关闭该标志时，编译器不会检查 undefined 类型和 null 类型的赋值。
+    Enable strict null checks. */
     // "strictFunctionTypes": true,           /* Enable strict checking of function types. */
     // "strictBindCallApply": true,           /* Enable strict 'bind', 'call', and 'apply' methods on functions. */
     // "strictPropertyInitialization": true,  /* Enable strict checking of property initialization in classes. */
-    // "noImplicitThis": true,                /* Raise error on 'this' expressions with an implied 'any' type. */
+    "noImplicitThis": true,                /*
+    在隐含有'any'类型的'this'表达式上引发错误。
+    Raise error on 'this' expressions with an implied 'any' type. */
     // "alwaysStrict": true,                  /* Parse in strict mode and emit "use strict" for each source file. */
 
     /* Additional Checks */

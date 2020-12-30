@@ -2,7 +2,7 @@
  * @Author: tangdaoyong
  * @Date: 2020-12-30 10:17:44
  * @LastEditors: tangdaoyong
- * @LastEditTime: 2020-12-30 10:53:23
+ * @LastEditTime: 2020-12-30 14:10:07
  * @Description: keyof测试
  */
 
@@ -51,7 +51,31 @@ let test: StringIndexArray = {
     name: 'matias'
 }
 console.log(test.name);
+console.log(test['name']);
 console.log(test[0]);
 
 type K8 = keyof StringIndexArray // type K1 = string | number
 type K9 = keyof NumberIndexArray // type K2 = number
+
+// 捕获字符串的类型与值
+const foo = 'Hello World';
+
+// 使用一个捕获的类型
+let bar: typeof foo;
+
+// bar 仅能被赋值 'Hello World'
+bar = 'Hello World'; // ok
+// bar = 'anything else'; // Error Type '"anything else"' is not assignable to type '"Hello World"'
+
+const colors = {
+    red: 'red',
+    blue: 'blue'
+  };
+  
+  type colorsType = typeof colors;
+  type Colors = keyof typeof colors;
+  
+  let color: Colors; // color 的类型是 'red' | 'blue'
+  color = 'red'; // ok
+  color = 'blue'; // ok
+//   color = 'anythingElse'; // Error Type '"anythingElse"' is not assignable to type '"red" | "blue"'
