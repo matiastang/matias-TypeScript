@@ -2,7 +2,7 @@
  * @Author: tangdaoyong
  * @Date: 2020-12-30 10:17:44
  * @LastEditors: tangdaoyong
- * @LastEditTime: 2020-12-30 14:10:07
+ * @LastEditTime: 2020-12-30 15:56:07
  * @Description: keyof测试
  */
 
@@ -79,3 +79,33 @@ const colors = {
   color = 'red'; // ok
   color = 'blue'; // ok
 //   color = 'anythingElse'; // Error Type '"anythingElse"' is not assignable to type '"red" | "blue"'
+
+// FOO
+enum FooIdBrand {
+    _ = ''
+  }
+  type FooId = FooIdBrand & string;
+  
+  // BAR
+  enum BarIdBrand {
+    _ = ''
+  }
+  type BarId = BarIdBrand & string;
+  
+  // user
+  
+  let fooId: FooId;
+  let barId: BarId;
+  
+  // 类型安全
+//   fooId = barId; // error
+//   barId = fooId; // error
+  
+  // 创建一个新的
+  fooId = 'foo' as FooId;
+  barId = 'bar' as BarId;
+  
+  // 两种类型都与基础兼容
+  let str: string;
+  str = fooId;
+  str = barId;
